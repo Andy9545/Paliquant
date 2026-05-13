@@ -1,4 +1,4 @@
-# Python-generated files
+# Python-generated files (project migrated to static website)
 __pycache__/
 *.py[oc]
 build/
@@ -8,3 +8,16 @@ wheels/
 
 # Virtual environments
 .venv
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Cloudflare
+CNAME

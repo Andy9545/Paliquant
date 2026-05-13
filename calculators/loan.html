@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="貸款計算機 — 計算等額本息貸款月付款、總還款額與總利息。免費線上試算工具。">
+  <meta property="og:title" content="貸款計算機 — 金融計算器">
+  <meta property="og:description" content="計算等額本息貸款月付款、總還款額與總利息。">
+  <meta property="og:type" content="website">
+  <title>貸款計算機 — 金融計算器</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
+</head>
+<body>
+  <header class="header">
+    <nav class="nav">
+      <div class="nav__brand">
+        <a href="/" class="nav__logo">
+          <i class="fas fa-calculator"></i>
+          <span>金融計算器</span>
+        </a>
+      </div>
+      <button class="nav__toggle" aria-label="選單">
+        <i class="fas fa-bars"></i>
+      </button>
+      <ul class="nav__menu">
+        <li class="nav__item"><a href="/" class="nav__link">首頁</a></li>
+        <li class="nav__item"><a href="/calculators/loan.html" class="nav__link nav__link--active">貸款計算</a></li>
+        <li class="nav__item"><a href="/calculators/mortgage.html" class="nav__link">房貸試算</a></li>
+        <li class="nav__item"><a href="/calculators/savings.html" class="nav__link">儲蓄規劃</a></li>
+        <li class="nav__item"><a href="/calculators/investment.html" class="nav__link">投資報酬</a></li>
+        <li class="nav__item"><a href="/calculators/retirement.html" class="nav__link">退休規劃</a></li>
+        <li class="nav__item"><a href="/calculators/currency.html" class="nav__link">匯率轉換</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="main">
+    <div class="ad-container ad-top">
+      <!-- AdSense code here after approval -->
+    </div>
+
+    <section class="calculator-page">
+      <div class="calculator-form">
+        <h1 class="calculator-form__title">貸款計算機</h1>
+
+        <div class="form-group">
+          <label for="loan-amount">貸款總額</label>
+          <input type="text" id="loan-amount" inputmode="decimal" placeholder="例如：1000000" aria-label="貸款總額">
+          <div class="error-message"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="loan-rate">年利率 (%)</label>
+          <input type="text" id="loan-rate" inputmode="decimal" placeholder="例如：5" aria-label="年利率">
+          <div class="error-message"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="loan-years">貸款年限</label>
+          <input type="text" id="loan-years" inputmode="numeric" placeholder="例如：20" aria-label="貸款年限">
+          <div class="error-message"></div>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn btn--primary btn--block" id="loan-calculate">計算</button>
+          <button type="button" class="btn btn--secondary btn--block" id="loan-reset">重設</button>
+        </div>
+      </div>
+
+      <div class="calculator-result" id="loan-result" style="display:none;">
+        <h2 class="calculator-result__title">試算結果</h2>
+
+        <div class="result-grid">
+          <div class="result-item">
+            <div class="result-item__label">每月還款金額</div>
+            <div class="result-item__value" id="loan-monthly-payment">—</div>
+          </div>
+          <div class="result-item">
+            <div class="result-item__label">總還款金額</div>
+            <div class="result-item__value" id="loan-total-payment">—</div>
+          </div>
+          <div class="result-item">
+            <div class="result-item__label">總利息</div>
+            <div class="result-item__value" id="loan-total-interest">—</div>
+          </div>
+          <div class="result-item">
+            <div class="result-item__label">利率</div>
+            <div class="result-item__value" id="loan-display-rate">—</div>
+          </div>
+        </div>
+
+        <div class="chart-container">
+          <canvas id="loan-chart"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <div class="disclaimer">
+      <strong>⚠️ 免責聲明</strong>
+      本計算結果僅供參考，實際貸款條件請以金融機構提供的報價為準。本網站不承擔任何因使用計算結果而產生的責任。
+    </div>
+
+    <div class="ad-container ad-bottom">
+      <!-- AdSense code here after approval -->
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__content">
+      <div class="footer__section">
+        <h3 class="footer__heading">金融計算器</h3>
+        <p class="footer__text">提供免費的金融試算工具，協助您規劃財務未來。</p>
+      </div>
+      <div class="footer__section">
+        <h3 class="footer__heading">工具列表</h3>
+        <ul class="footer__links">
+          <li><a href="/calculators/loan.html">貸款計算機</a></li>
+          <li><a href="/calculators/mortgage.html">房貸試算</a></li>
+          <li><a href="/calculators/savings.html">儲蓄規劃</a></li>
+          <li><a href="/calculators/investment.html">投資報酬</a></li>
+          <li><a href="/calculators/retirement.html">退休規劃</a></li>
+          <li><a href="/calculators/currency.html">匯率轉換</a></li>
+        </ul>
+      </div>
+      <div class="footer__section">
+        <h3 class="footer__heading">法律資訊</h3>
+        <ul class="footer__links">
+          <li><a href="/privacy.html">隱私政策</a></li>
+          <li><a href="/disclaimer.html">免責聲明</a></li>
+          <li><a href="/about.html">關於我們</a></li>
+          <li><a href="/contact.html">聯絡我們</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>&copy; 2025 金融計算器. All rights reserved.</p>
+      <p class="footer__disclaimer">本網站提供的計算結果僅供參考，不構成任何財務建議。</p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/utils.js"></script>
+  <script src="/assets/js/calculators/loan.js"></script>
+  <script src="/assets/js/main.js"></script>
+</body>
+</html>
