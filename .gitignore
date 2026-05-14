@@ -21,3 +21,6 @@ Thumbs.db
 
 # Cloudflare
 CNAME
+
+# Session logs (contain potential sensitive info)
+session-*.md

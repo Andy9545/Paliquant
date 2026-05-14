@@ -8,15 +8,17 @@
   └───── 反饋迭代 ←────────────┘
 ```
 
-## 階段一：專案初始化（已完成）
+## 階段一：專案初始化（已完成 ✅）
 
 - [x] 建立 AGENTS.md（AI 協作規則）
 - [x] 建立 docs/（文件目錄）
-- [ ] 建立 HTML 基礎模板
-- [ ] 建立 CSS 基礎樣式
-- [ ] 建立 JS 共用工具函式
-- [ ] 設定 Cloudflare Pages 專案
-- [ ] 設定自訂網域
+- [x] 建立 HTML 基礎模板
+- [x] 建立 CSS 基礎樣式
+- [x] 建立 JS 共用工具函式
+- [x] SSH 金鑰設定完成，Remote URL 切換為 SSH
+- [x] 首次推送至 GitHub 完成
+- [ ] 設定 Cloudflare Pages 專案（待 Cloudflare 操作）
+- [ ] 設定自訂網域（待 Cloudflare 操作）
 
 ## 階段二：核心功能開發
 
@@ -91,11 +93,9 @@ Step 3: 審核通過後
 
 ### 部署流程（Cloudflare Pages）
 
-1. 將程式碼推送至 GitHub 倉庫
+1. 將程式碼推送至 GitHub 倉庫（SSH 認證，無需密碼）
    ```bash
-   git add .
-   git commit -m "feat: add [功能描述]"
-   git push origin main
+   git add -A && git commit -m "feat: add [功能描述]" && git push
    ```
 
 2. Cloudflare Pages 自動部署

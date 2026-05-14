@@ -4,12 +4,45 @@
 
 一站式金融計算器網站，部署於 Cloudflare Pages，使用自訂網域，透過 Google AdSense 賺取收益。
 
+## 專案狀態
+
+- **Repo**: `Andy9545/Paliquant` (GitHub)
+- **Remote (SSH)**: `git@github.com:Andy9545/Paliquant.git`
+- **SSH 金鑰位置**: `~/.ssh/id_ed25519` (對應 GitHub 帳號 Andy9545)
+- **目前進度**: 已初始化專案結構、貸款計算機完整實作、其餘 5 個計算機為骨架頁面
+- **已推到 GitHub**: ✅ (可至 Cloudflare Pages 設定部署)
+
+### 已實作頁面
+
+| 頁面 | 狀態 | 說明 |
+|------|------|------|
+| index.html | ✅ 完成 | 首頁含 6 張計算機卡片、導航、廣告位 |
+| calculators/loan.html | ✅ 完成 | 貸款計算機（Chart.js doughnut 圖表） |
+| calculators/mortgage.html | ⏸ 骨架 | 待實作房貸試算含攤還表 |
+| calculators/savings.html | ⏸ 骨架 | 待實作複利儲蓄計算 |
+| calculators/investment.html | ⏸ 骨架 | 待實作定期定額投資報酬 |
+| calculators/retirement.html | ⏸ 骨架 | 待實作退休金需求評估 |
+| calculators/currency.html | ⏸ 骨架 | 待實作匯率轉換（API 串接） |
+
+### 交辦事項（高優先）
+
+1. 開發 mortgage 房貸試算（含攤還明細表 + Chart.js 長條圖）
+2. 開發 savings 儲蓄規劃（複利計算 + 成長曲線圖）
+3. 開發 investment 投資報酬（定期定額計算）
+4. 開發 retirement 退休規劃（多參數綜合評估）
+5. 開發 currency 匯率轉換（串接免費匯率 API）
+6. 建立隱私政策 / 關於我們 / 聯絡我們 等法律頁面
+7. 申請 Google AdSense 並整合廣告程式碼
+8. 設定 Cloudflare Pages 自訂網域
+
 ## 技術棧
 
 - **前端**: HTML5 + CSS3 + Vanilla JavaScript
-- **圖表**: Chart.js (CDN)
+- **圖表**: Chart.js 4.x (CDN: `https://cdn.jsdelivr.net/npm/chart.js`)
+- **圖示**: Font Awesome 6.x (CDN: `https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css`)
+- **字體**: Google Fonts Noto Sans TC (CDN)
 - **部署**: Cloudflare Pages (靜態網站)
-- **版本控制**: Git + GitHub
+- **版本控制**: Git + GitHub (SSH 認證)
 - **套件管理**: 無（純靜態網站，不需建置工具）
 
 ## 重要：不允許使用的技術
@@ -107,6 +140,24 @@
 - 廣告區塊必須與內容清楚區隔
 - 嚴禁點擊欺詐或誤導使用者點擊廣告
 
+## 安全與憑證規則
+
+### Git 推送規則
+- 遠端使用 SSH 認證：`git@github.com:Andy9545/Paliquant.git`
+- SSH 私鑰位於 `~/.ssh/id_ed25519`（無密碼，對應 GitHub 帳號 Andy9545）
+- **嚴禁在對話中直接使用 PAT（Personal Access Token）**，若必須使用，用完需立即撤銷 token
+- 推送指令：`git add -A && git commit -m "訊息" && git push`
+
+### Session 檔案管理
+- 每次對話的記錄會自動儲存為 `session-*.md`
+- 新對話開始時應先讀取 `AGENTS.md` 和最新的 `session-*.md` 以了解專案狀態
+- Session 檔案僅供參考，不應提交到 Git
+
+### 安全敏感操作
+- 任何 token、密碼、金鑰等敏感資訊不得寫入程式碼或 commit 中
+- 外部 CDN 資源建議使用 SRI（Subresource Integrity）雜湊
+- 廣告容器預留空間防止 CLS（Cumulative Layout Shift）
+
 ## AI 請求規範
 
 ### 向 AI 描述功能時，必須包含：
@@ -133,7 +184,18 @@
 2. **開發** → 使用 AI 生成程式碼，每次專注一個計算機
 3. **測試** → 在瀏覽器中手動測試所有邊界情況
 4. **提交** → Git commit 並推送
+   ```bash
+   git add -A && git commit -m "feat: add 功能說明" && git push
+   ```
 5. **部署** → Cloudflare Pages 自動部署（或手動觸發）
+
+## 新對話啟動流程
+
+每次開啟新對話時，AI 應依序執行：
+1. 讀取 `AGENTS.md` — 了解專案規則、狀態、交辦事項
+2. 讀取最新的 `session-*.md` — 了解上次對話的上下文和進度
+3. 檢查 `git status` 和 `git log -5` — 確認目前程式碼狀態
+4. 根據交辦事項決定本次要開發的功能
 
 ## Code Review 清單
 
