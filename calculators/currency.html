@@ -6,19 +6,38 @@
   <meta name="description" content="匯率轉換計算機 — 即時匯率換算，支援多種國際貨幣。免費線上匯率轉換工具。">
   <meta property="og:title" content="匯率轉換計算機 — 金融計算器">
   <meta property="og:description" content="即時匯率換算，支援多種國際貨幣。">
+  <meta property="og:type" content="website">
   <title>匯率轉換 — 金融計算器</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1464276579658775" crossorigin="anonymous"></script>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="/assets/css/style.css">
   <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "首頁", "item": "https://paliquant.com" },
+      { "@type": "ListItem", "position": 2, "name": "匯率轉換", "item": "https://paliquant.com/calculators/currency.html" }
+    ]
+  }
+  </script>
 </head>
 <body>
   <header class="header">
     <nav class="nav">
-      <div class="nav__brand"><a href="/" class="nav__logo"><i class="fas fa-calculator"></i><span>金融計算器</span></a></div>
-      <button class="nav__toggle" aria-label="選單"><i class="fas fa-bars"></i></button>
+      <div class="nav__brand">
+        <a href="/" class="nav__logo">
+          <i class="fas fa-calculator"></i>
+          <span>金融計算器</span>
+        </a>
+      </div>
+      <button class="nav__toggle" aria-label="選單">
+        <i class="fas fa-bars"></i>
+      </button>
       <ul class="nav__menu">
         <li class="nav__item"><a href="/" class="nav__link">首頁</a></li>
         <li class="nav__item"><a href="/calculators/loan.html" class="nav__link">貸款計算</a></li>
@@ -30,21 +49,110 @@
       </ul>
     </nav>
   </header>
+
   <main class="main">
-    <div class="ad-container ad-top"><!-- AdSense --></div>
+    <div class="ad-container ad-top">
+    </div>
+
     <section class="calculator-page">
       <div class="calculator-form">
         <h1 class="calculator-form__title">匯率轉換計算機</h1>
-        <p style="color:var(--color-text-light);margin-bottom:var(--spacing-lg);font-size:var(--font-size-sm);">此功能即將推出，敬請期待。</p>
+        <p style="font-size:var(--font-size-sm);color:var(--color-text-light);margin-bottom:var(--spacing-lg);">即時匯率換算，資料來源：Frankfurter API</p>
+
+        <div class="form-group">
+          <label for="currency-amount">金額</label>
+          <input type="text" id="currency-amount" inputmode="decimal" placeholder="例如：1000" aria-label="金額">
+          <div class="error-message"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="currency-from">從</label>
+          <select id="currency-from" aria-label="來源貨幣">
+            <option value="TWD">TWD - 新台幣</option>
+            <option value="USD" selected>USD - 美元</option>
+            <option value="EUR">EUR - 歐元</option>
+            <option value="GBP">GBP - 英鎊</option>
+            <option value="JPY">JPY - 日圓</option>
+            <option value="KRW">KRW - 韓元</option>
+            <option value="CNY">CNY - 人民幣</option>
+            <option value="HKD">HKD - 港幣</option>
+            <option value="SGD">SGD - 新加坡幣</option>
+            <option value="AUD">AUD - 澳幣</option>
+            <option value="CAD">CAD - 加拿大幣</option>
+            <option value="CHF">CHF - 瑞士法郎</option>
+            <option value="SEK">SEK - 瑞典克朗</option>
+            <option value="NOK">NOK - 挪威克朗</option>
+            <option value="NZD">NZD - 紐西蘭幣</option>
+            <option value="THB">THB - 泰銖</option>
+            <option value="VND">VND - 越南盾</option>
+            <option value="PHP">PHP - 菲律賓披索</option>
+            <option value="MYR">MYR - 馬來西亞令吉</option>
+            <option value="INR">INR - 印度盧比</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="currency-to">到</label>
+          <select id="currency-to" aria-label="目標貨幣">
+            <option value="TWD" selected>TWD - 新台幣</option>
+            <option value="USD">USD - 美元</option>
+            <option value="EUR">EUR - 歐元</option>
+            <option value="GBP">GBP - 英鎊</option>
+            <option value="JPY">JPY - 日圓</option>
+            <option value="KRW">KRW - 韓元</option>
+            <option value="CNY">CNY - 人民幣</option>
+            <option value="HKD">HKD - 港幣</option>
+            <option value="SGD">SGD - 新加坡幣</option>
+            <option value="AUD">AUD - 澳幣</option>
+            <option value="CAD">CAD - 加拿大幣</option>
+            <option value="CHF">CHF - 瑞士法郎</option>
+            <option value="SEK">SEK - 瑞典克朗</option>
+            <option value="NOK">NOK - 挪威克朗</option>
+            <option value="NZD">NZD - 紐西蘭幣</option>
+            <option value="THB">THB - 泰銖</option>
+            <option value="VND">VND - 越南盾</option>
+            <option value="PHP">PHP - 菲律賓披索</option>
+            <option value="MYR">MYR - 馬來西亞令吉</option>
+            <option value="INR">INR - 印度盧比</option>
+          </select>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn btn--primary btn--block" id="currency-calculate">轉換</button>
+          <button type="button" class="btn btn--secondary btn--block" id="currency-swap"><i class="fas fa-exchange-alt"></i> 互換</button>
+          <button type="button" class="btn btn--secondary btn--block" id="currency-reset">重設</button>
+        </div>
       </div>
-      <div class="calculator-result">
+
+      <div class="calculator-result" id="currency-result" style="display:none;">
         <h2 class="calculator-result__title">轉換結果</h2>
-        <p style="color:var(--color-text-light);">即將推出</p>
+
+        <div class="result-grid">
+          <div class="result-item result-item--full">
+            <div class="result-item__label" id="currency-result-label">轉換結果</div>
+            <div class="result-item__value" id="currency-result-value" style="font-size:var(--font-size-2xl);">—</div>
+          </div>
+          <div class="result-item">
+            <div class="result-item__label">匯率</div>
+            <div class="result-item__value" id="currency-rate">—</div>
+          </div>
+          <div class="result-item">
+            <div class="result-item__label">更新時間</div>
+            <div class="result-item__value" id="currency-date" style="font-size:var(--font-size-base);">—</div>
+          </div>
+        </div>
       </div>
     </section>
-    <div class="disclaimer"><strong>⚠️ 免責聲明</strong> 匯率資料僅供參考，實際交易匯率請以銀行為準。</div>
-    <div class="ad-container ad-bottom"><!-- AdSense --></div>
+
+    <div class="disclaimer">
+      <strong>⚠️ 免責聲明</strong>
+      匯率資料來自第三方 API，僅供參考。實際交易匯率請以銀行為準。本網站不承擔任何因使用匯率資訊而產生的責任。
+    </div>
+
+    <div class="ad-container ad-bottom">
+    </div>
   </main>
+
   <footer class="footer">
     <div class="footer__content">
       <div class="footer__section">
@@ -77,7 +185,9 @@
       <p class="footer__disclaimer">本網站提供的計算結果僅供參考，不構成任何財務建議。</p>
     </div>
   </footer>
+
   <script src="/assets/js/utils.js"></script>
+  <script src="/assets/js/calculators/currency.js"></script>
   <script src="/assets/js/main.js"></script>
 </body>
 </html>

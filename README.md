@@ -11,6 +11,10 @@
 - [ ] 退休規劃計算機
 - [ ] 匯率轉換計算機
 
+## 設計系統
+
+採用 Coinbase 風格設計系統，詳見 `DESIGN.md`。
+
 ## 技術棧
 
 - HTML5 + CSS3 + Vanilla JavaScript
@@ -32,7 +36,9 @@
 
 詳細文件請參考 `docs/` 目錄：
 - `docs/architecture.md` — 系統架構
-- `docs/workflow.md` — 開發工作流
+- `docs/workflow.md` — 開發工作流（含行銷技能觸發流程）
 - `docs/tech-stack.md` — 技術棧說明
 - `docs/ad-revenue.md` — 廣告收益計畫
+- `DESIGN.md` — Coinbase 風格設計系統
+- `.agents/skills/` — AI 行銷技能（SEO、Schema、內容策略等）
 - `AGENTS.md` — AI 協作規則

@@ -3,23 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="投資報酬計算機 — 定期定額投資報酬率與最終價值計算。免費線上投資試算工具。">
+  <meta name="description" content="投資報酬計算機 — 定期定額投資試算，計算每月投入金額在複利效果下的最終價值與總報酬。免費線上投資試算工具。">
   <meta property="og:title" content="投資報酬計算機 — 金融計算器">
   <meta property="og:description" content="定期定額投資報酬率與最終價值計算。">
+  <meta property="og:type" content="website">
   <title>投資報酬 — 金融計算器</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1464276579658775" crossorigin="anonymous"></script>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="/assets/css/style.css">
   <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "首頁", "item": "https://paliquant.com" },
+      { "@type": "ListItem", "position": 2, "name": "投資報酬", "item": "https://paliquant.com/calculators/investment.html" }
+    ]
+  }
+  </script>
 </head>
 <body>
   <header class="header">
     <nav class="nav">
-      <div class="nav__brand"><a href="/" class="nav__logo"><i class="fas fa-calculator"></i><span>金融計算器</span></a></div>
-      <button class="nav__toggle" aria-label="選單"><i class="fas fa-bars"></i></button>
+      <div class="nav__brand">
+        <a href="/" class="nav__logo">
+          <i class="fas fa-calculator"></i>
+          <span>金融計算器</span>
+        </a>
+      </div>
+      <button class="nav__toggle" aria-label="選單">
+        <i class="fas fa-bars"></i>
+      </button>
       <ul class="nav__menu">
         <li class="nav__item"><a href="/" class="nav__link">首頁</a></li>
         <li class="nav__item"><a href="/calculators/loan.html" class="nav__link">貸款計算</a></li>
@@ -31,21 +50,77 @@
       </ul>
     </nav>
   </header>
+
   <main class="main">
-    <div class="ad-container ad-top"><!-- AdSense --></div>
+    <div class="ad-container ad-top">
+    </div>
+
     <section class="calculator-page">
       <div class="calculator-form">
         <h1 class="calculator-form__title">投資報酬計算機</h1>
-        <p style="color:var(--color-text-light);margin-bottom:var(--spacing-lg);font-size:var(--font-size-sm);">此功能即將推出，敬請期待。</p>
+        <p style="font-size:var(--font-size-sm);color:var(--color-text-light);margin-bottom:var(--spacing-lg);">定期定額投資試算 — 每月固定投入，計算長期複利效果</p>
+
+        <div class="form-group">
+          <label for="investment-monthly">每月投資金額</label>
+          <input type="text" id="investment-monthly" inputmode="decimal" placeholder="例如：10000" aria-label="每月投資金額">
+          <div class="error-message"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="investment-rate">預期年化報酬率 (%)</label>
+          <input type="text" id="investment-rate" inputmode="decimal" placeholder="例如：8" aria-label="預期年化報酬率">
+          <div class="error-message"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="investment-years">投資年限</label>
+          <input type="text" id="investment-years" inputmode="numeric" placeholder="例如：20" aria-label="投資年限">
+          <div class="error-message"></div>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn btn--primary btn--block" id="investment-calculate">計算</button>
+          <button type="button" class="btn btn--secondary btn--block" id="investment-reset">重設</button>
+        </div>
       </div>
-      <div class="calculator-result">
+
+      <div class="calculator-result" id="investment-result" style="display:none;">
         <h2 class="calculator-result__title">試算結果</h2>
-        <p style="color:var(--color-text-light);">即將推出</p>
+
+        <div class="result-grid">
+          <div class="result-item result-item--full">
+            <div class="result-item__label">最終價值</div>
+            <div class="result-item__value" id="investment-final">—</div>
+          </div>
+          <div class="result-item">
+            <div class="result-item__label">總投入本金</div>
+            <div class="result-item__value" id="investment-principal">—</div>
+          </div>
+          <div class="result-item">
+            <div class="result-item__label">總報酬</div>
+            <div class="result-item__value" id="investment-return">—</div>
+          </div>
+          <div class="result-item">
+            <div class="result-item__label">報酬率</div>
+            <div class="result-item__value" id="investment-return-rate">—</div>
+          </div>
+        </div>
+
+        <div class="chart-container">
+          <canvas id="investment-chart"></canvas>
+        </div>
       </div>
     </section>
-    <div class="disclaimer"><strong>⚠️ 免責聲明</strong> 本計算結果僅供參考，投資有賺有賠，過去績效不代表未來表現。</div>
-    <div class="ad-container ad-bottom"><!-- AdSense --></div>
+
+    <div class="disclaimer">
+      <strong>⚠️ 免責聲明</strong>
+      本計算結果僅供參考，投資有賺有虧，過去績效不代表未來表現。本網站不承擔任何因使用計算結果而產生的責任。
+    </div>
+
+    <div class="ad-container ad-bottom">
+    </div>
   </main>
+
   <footer class="footer">
     <div class="footer__content">
       <div class="footer__section">
@@ -78,7 +153,9 @@
       <p class="footer__disclaimer">本網站提供的計算結果僅供參考，不構成任何財務建議。</p>
     </div>
   </footer>
+
   <script src="/assets/js/utils.js"></script>
+  <script src="/assets/js/calculators/investment.js"></script>
   <script src="/assets/js/main.js"></script>
 </body>
 </html>
