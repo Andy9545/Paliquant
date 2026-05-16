@@ -9,8 +9,8 @@
 - **Repo**: `Andy9545/Paliquant` (GitHub)
 - **Remote (SSH)**: `git@github.com:Andy9545/Paliquant.git`
 - **SSH 金鑰位置**: `~/.ssh/id_ed25519` (對應 GitHub 帳號 Andy9545)
-- **目前進度**: 已初始化專案結構、貸款計算機完整實作、其餘 5 個計算機為骨架頁面
-- **設計系統**: Coinbase 風格（參考 `DESIGN.md`）
+- **目前進度**: ✅ 全部 6 個計算機已實作完成、Google AdSense 已整合、深色主題已套用
+- **設計系統**: 深色主題（參考 `DESIGN.md`）
 - **行銷技能**: 已安裝 6 組 AI 行銷技能（`.agents/skills/`）
 - **已推到 GitHub**: ✅ (可至 Cloudflare Pages 設定部署)
 
@@ -18,24 +18,26 @@
 
 | 頁面 | 狀態 | 說明 |
 |------|------|------|
-| index.html | ✅ 完成 | 首頁含 6 張計算機卡片、導航、廣告位 |
-| calculators/loan.html | ✅ 完成 | 貸款計算機（Chart.js doughnut 圖表） |
-| calculators/mortgage.html | ⏸ 骨架 | 待實作房貸試算含攤還表 |
-| calculators/savings.html | ⏸ 骨架 | 待實作複利儲蓄計算 |
-| calculators/investment.html | ⏸ 骨架 | 待實作定期定額投資報酬 |
-| calculators/retirement.html | ⏸ 骨架 | 待實作退休金需求評估 |
-| calculators/currency.html | ⏸ 骨架 | 待實作匯率轉換（API 串接） |
+| index.html | ✅ 完成 | 首頁含 6 張計算機卡片、導航、廣告位、WebSite Schema |
+| calculators/loan.html | ✅ 完成 | 貸款計算機（Chart.js doughnut、BreadcrumbList Schema） |
+| calculators/mortgage.html | ✅ 完成 | 房貸試算（攤還明細表前12期、Doughnut 圖表） |
+| calculators/savings.html | ✅ 完成 | 儲蓄規劃（複利計算、Line 成長曲線圖） |
+| calculators/investment.html | ✅ 完成 | 投資報酬（定期定額、Line 成長曲線圖） |
+| calculators/retirement.html | ✅ 完成 | 退休規劃（多參數評估、Bar 資產預測圖） |
+| calculators/currency.html | ✅ 完成 | 匯率轉換（Frankfurter API、20種貨幣） |
 
-### 交辦事項（高優先）
+### 待辦事項
 
-1. 開發 mortgage 房貸試算（含攤還明細表 + Chart.js 長條圖）
-2. 開發 savings 儲蓄規劃（複利計算 + 成長曲線圖）
-3. 開發 investment 投資報酬（定期定額計算）
-4. 開發 retirement 退休規劃（多參數綜合評估）
-5. 開發 currency 匯率轉換（串接免費匯率 API）
-6. 建立隱私政策 / 關於我們 / 聯絡我們 等法律頁面
-7. 申請 Google AdSense 並整合廣告程式碼
-8. 設定 Cloudflare Pages 自訂網域
+| 優先 | 項目 | 說明 |
+|------|------|------|
+| P1 | 建立法律頁面 | privacy.html、about.html、contact.html、disclaimer.html |
+| P1 | 申請 Google AdSense | 需網站至少有 10-15 頁內容、隱私政策、部署到公開網域 |
+| P1 | 整合廣告單元 | 每個頁面的 ad-container 填入 AdSense 程式碼 |
+| P2 | 設定 Cloudflare Pages | 連結 GitHub 倉庫，選擇 main 分支 |
+| P2 | 設定自訂網域 | 在 Cloudflare Pages 綁定已購買的網域 |
+| P2 | 提交 Search Console | 讓 Google 索引網站 |
+| P3 | 內容擴充 | 每個計算機頁面加入 FAQ 區塊、HowTo 教學 |
+| P3 | Analytics 整合 | 加入 GA4 事件追蹤 |
 
 ## 技術棧
 
@@ -43,6 +45,7 @@
 - **圖表**: Chart.js 4.x (CDN: `https://cdn.jsdelivr.net/npm/chart.js`)
 - **圖示**: Font Awesome 6.x (CDN: `https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css`)
 - **字體**: Google Fonts Noto Sans TC (CDN)
+- **匯率 API**: Frankfurter (免費、免 API Key)
 - **部署**: Cloudflare Pages (靜態網站)
 - **版本控制**: Git + GitHub (SSH 認證)
 - **套件管理**: 無（純靜態網站，不需建置工具）
@@ -58,42 +61,35 @@
 
 ## 設計系統（DESIGN.md）
 
-專案根目錄的 `DESIGN.md` 定義了基於 Coinbase 風格的設計語言：
+專案根目錄的 `DESIGN.md` 定義了深色主題設計語言：
 
 ### 核心色票
-- **Coinbase Blue** (`#0052ff`): 主要 CTA 按鈕、品牌標誌、強調連結（唯一品牌色彩）
-- **Ink** (`#0a0b0d`): 標題與強調文字
-- **Body** (`#5b616e`): 內文預設色
-- **Canvas** (`#ffffff`): 頁面底色
-- **Surface Dark** (`#0a0b0d`): 深色全幅英雄區
-- **Semantic Up** (`#05b169`): 正值/漲（文字色）
-- **Semantic Down** (`#cf202f`): 負值/跌（文字色）
-
-### 字體層級
-- 內文使用 Noto Sans TC（Google Fonts），對應 CoinbaseSans
-- 展示級標題使用 weight 400（不粗體），負 letter-spacing
-- 所有數字使用 tabular-figures（tnum）等寬數字
+- **Primary** (`#3b82f6`): 主要 CTA 按鈕、品牌標誌、強調連結
+- **Primary Dark** (`#2563eb`): 按鈕懸停狀態
+- **Text** (`#e5e7eb`): 標題與內文
+- **Text Light** (`#9ca3af`): 次要文字、標籤
+- **Text Muted** (`#6b7280`): 提示文字、placeholder
+- **Bg** (`#0a0a0a`): 頁面底色
+- **Bg Soft** (`#111111`): 次要背景、輸入框
+- **Surface** (`#1a1a1a`): 卡片背景
+- **Border** (`#2a2a2a`): 邊框
+- **Success** (`#10b981`): 成功/正值
+- **Error** (`#ef4444`): 錯誤/負值
+- **Warning** (`#f59e0b`): 警告
 
 ### 圓角規範
 - CTA 按鈕: `pill` (100px)
-- 特色卡片: `xl` (24px)
-- 表單輸入: `md` (12px)
+- 卡片: `lg` (16px)
+- 表單輸入: `base` (12px)
 - 圖示頭像: `full` (9999px)
 
-### 元件
-所有元件定義在 `DESIGN.md` 的 `components:` 區塊，引用時使用 `{token.ref}` 語法：
-- `{colors.primary}` / `{colors.ink}` / `{colors.canvas}`
-- `{typography.body-md}` / `{typography.display-mega}`
-- `{rounded.pill}` / `{rounded.xl}`
-- `{spacing.section}` / `{spacing.xl}`
-
-實作時遵循 Do's and Don'ts（詳見 DESIGN.md），重點：
-- ✅ Blue 只用於主要 CTA，不氾濫使用
-- ✅ 所有按鈕 pill 形狀
-- ✅ 96px 區塊節奏、充足的留白
-- ❌ 不引入第二品牌色
-- ❌ 不使用尖角（0px border-radius）
-- ❌ 不將漲跌色作為按鈕背景
+### 視覺效果
+- 背景漸層光暈（radial-gradient）
+- 導航列毛玻璃（backdrop-filter blur）
+- 卡片懸停頂部漸層光條
+- 按鈕漸層 + 懸停光暈
+- 表單聚焦藍色光暈
+- 自訂深色捲軸
 
 ## AI 行銷技能（.agents/skills/）
 
@@ -116,19 +112,29 @@ AI 偵測到上述關鍵字時，應自動載入對應的 `.agents/skills/<skill
 ```
 /
 ├── index.html               # 首頁
-├── DESIGN.md                # 設計系統（Coinbase 風格）
+├── DESIGN.md                # 設計系統（深色主題）
 ├── calculators/             # 各計算機頁面
+│   ├── loan.html            # ✅ 貸款計算機
+│   ├── mortgage.html        # ✅ 房貸試算
+│   ├── savings.html         # ✅ 儲蓄規劃
+│   ├── investment.html      # ✅ 投資報酬
+│   ├── retirement.html      # ✅ 退休規劃
+│   └── currency.html        # ✅ 匯率轉換
 ├── assets/
 │   ├── css/
-│   │   └── style.css        # 全域樣式
+│   │   └── style.css        # 全域樣式（深色主題）
 │   ├── js/
-│   │   ├── main.js          # 共用 JS（導航、廣告等）
+│   │   ├── main.js          # 共用 JS（導航、版權年份）
 │   │   ├── utils.js         # 共用工具函式
 │   │   └── calculators/     # 各計算機邏輯
-│   ├── images/
-│   │   └── favicon.ico
-│   └── data/
-│       └── exchange-rates.json
+│   │       ├── loan.js
+│   │       ├── mortgage.js
+│   │       ├── savings.js
+│   │       ├── investment.js
+│   │       ├── retirement.js
+│   │       └── currency.js
+│   └── images/
+│       └── favicon.ico
 ├── docs/                    # 專案文件
 │   ├── architecture.md
 │   ├── workflow.md
@@ -186,7 +192,7 @@ AI 偵測到上述關鍵字時，應自動載入對應的 `.agents/skills/<skill
 
 ## 廣告（Google AdSense）規範
 
-- AdSense 程式碼統一在 `assets/js/main.js` 或直接在 HTML 中管理
+- AdSense 程式碼已在所有頁面的 `<head>` 中載入（`ca-pub-1464276579658775`）
 - 廣告位置：
   - 頁面頂部（導航下方）— 橫幅廣告
   - 計算器結果下方 — 橫幅廣告
@@ -249,7 +255,7 @@ Step 2: 需求撰寫
 
 Step 3: 設計套用
    └─ 參考 DESIGN.md 的元件定義
-   └─ 使用 Coinbase 色票、圓角、排版層級
+   └─ 使用深色主題色票、圓角、排版層級
 
 Step 4: 開發（HTML + CSS + JS）
    └─ AI 生成程式碼，遵循編碼習慣
@@ -277,17 +283,14 @@ Step 9: 提交程式碼
    └─ commit message 格式：`feat: add [calculator name] calculator`
 ```
 
-### 優先順序
-1. mortgage → 2. savings → 3. investment → 4. retirement → 5. currency
-
 ### Git Commit 規範
 
 | 類型 | 情境 | 範例 |
 |------|------|------|
 | `feat` | 新增計算機或功能 | `feat: add mortgage calculator` |
 | `fix` | 修復錯誤 | `fix: validate negative loan amount` |
-| `docs` | 文件異動 | `docs: add marketing skills setup` |
-| `style` | 設計系統調整 | `style: apply Coinbase design tokens` |
+| `docs` | 文件異動 | `docs: update README and AGENTS` |
+| `style` | 設計系統調整 | `style: apply dark theme` |
 | `refactor` | 重構 | `refactor: extract utils functions` |
 | `perf` | 效能最佳化 | `perf: lazy load ad units` |
 | `seo` | 搜尋引擎優化 | `seo: add FAQ schema to loan page` |
@@ -301,7 +304,7 @@ Step 9: 提交程式碼
 3. 讀取最新的 `session-*.md` — 了解上次對話的上下文和進度
 4. 檢查 `.agents/skills/` 中與本次任務相關的技能
 5. 檢查 `git status` 和 `git log -5` — 確認目前程式碼狀態
-6. 根據交辦事項決定本次要開發的功能
+6. 根據待辦事項決定本次要開發的功能
 
 ## Code Review 清單
 
@@ -317,7 +320,8 @@ Step 9: 提交程式碼
 - [ ] 色彩使用符合 DESIGN.md 規範
 - [ ] 按鈕圓角使用 pill（100px）
 - [ ] 數字使用千分位逗號 + 2 位小數
-- [ ] 頁面包含 FAQ 或 HowTo Schema（JSON-LD）
+- [ ] 頁面包含 BreadcrumbList Schema（JSON-LD）
 - [ ] 頁面有獨立的 meta title + description
 - [ ] 圖片有 alt 文字
 - [ ] 內部連結使用相對路徑
+- [ ] 圖表適配深色主題（文字顏色、tooltip、grid）

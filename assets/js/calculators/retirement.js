@@ -206,11 +206,11 @@ document.addEventListener('DOMContentLoaded', function () {
     statusContainer.style.display = 'block';
     if (result.isSufficient) {
       statusEl.textContent = '每月餘裕 ' + formatMoney(result.gap * -1);
-      statusEl.style.color = '#059669';
+      statusEl.style.color = '#10b981';
       statusLabel.textContent = '✅ 退休金充足 — 每月多出';
     } else {
       statusEl.textContent = '每月不足 ' + formatMoney(result.gap);
-      statusEl.style.color = '#dc2626';
+      statusEl.style.color = '#ef4444';
       statusLabel.textContent = '⚠️ 退休金不足 — 每月差額';
     }
 
@@ -247,6 +247,11 @@ document.addEventListener('DOMContentLoaded', function () {
             display: false,
           },
           tooltip: {
+            backgroundColor: 'rgba(26, 26, 26, 0.95)',
+            titleColor: '#e5e7eb',
+            bodyColor: '#e5e7eb',
+            borderColor: '#333',
+            borderWidth: 1,
             callbacks: {
               label: function (context) {
                 return '資產總額: ' + formatMoney(context.parsed.y);
@@ -257,9 +262,10 @@ document.addEventListener('DOMContentLoaded', function () {
         scales: {
           x: {
             grid: {
-              display: false,
+              color: 'rgba(42, 42, 42, 0.5)',
             },
             ticks: {
+              color: '#9ca3af',
               font: {
                 size: 10,
               },
@@ -268,7 +274,11 @@ document.addEventListener('DOMContentLoaded', function () {
           },
           y: {
             beginAtZero: true,
+            grid: {
+              color: 'rgba(42, 42, 42, 0.5)',
+            },
             ticks: {
+              color: '#9ca3af',
               font: {
                 size: 11,
               },

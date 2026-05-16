@@ -202,6 +202,7 @@ document.addEventListener('DOMContentLoaded', function () {
           legend: {
             position: 'bottom',
             labels: {
+              color: '#e5e7eb',
               font: {
                 size: 14,
               },
@@ -209,6 +210,11 @@ document.addEventListener('DOMContentLoaded', function () {
             },
           },
           tooltip: {
+            backgroundColor: 'rgba(26, 26, 26, 0.95)',
+            titleColor: '#e5e7eb',
+            bodyColor: '#e5e7eb',
+            borderColor: '#333',
+            borderWidth: 1,
             callbacks: {
               label: function (context) {
                 return context.label + ': ' + formatMoney(context.parsed);

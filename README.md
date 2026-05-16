@@ -4,23 +4,35 @@
 
 ## 功能列表
 
-- [x] 貸款計算機（已實作）
-- [ ] 房貸試算
-- [ ] 儲蓄規劃
-- [ ] 投資報酬計算機
-- [ ] 退休規劃計算機
-- [ ] 匯率轉換計算機
+| 計算機 | 狀態 | 功能說明 |
+|--------|------|----------|
+| 貸款計算機 | ✅ | 等額本息計算、月付款/總還款/總利息、Doughnut 圖表 |
+| 房貸試算 | ✅ | 房價/自備款/利率/年限、攤還明細表（前12期）、Doughnut 圖表 |
+| 儲蓄規劃 | ✅ | 初始存款+每月存入、複利計算、成長曲線圖 |
+| 投資報酬 | ✅ | 定期定額投資、年化報酬率、總報酬/報酬率、成長曲線圖 |
+| 退休規劃 | ✅ | 年齡/儲蓄/報酬率/通膨/生活費、充足性評估、資產預測圖 |
+| 匯率轉換 | ✅ | 20種貨幣、Frankfurter API 即時匯率、互換功能 |
 
 ## 設計系統
 
-採用 Coinbase 風格設計系統，詳見 `DESIGN.md`。
+採用深色主題設計，參考 `DESIGN.md`。
+
+### 核心特色
+- 深色背景（`#0a0a0a`）搭配漸層光暈
+- 藍色主色調（`#3b82f6`）用於 CTA 與強調
+- 毛玻璃導航列（backdrop-filter blur）
+- 圓角 pill 按鈕 + 卡片懸停漸層光條
+- 所有圖表適配深色主題
 
 ## 技術棧
 
 - HTML5 + CSS3 + Vanilla JavaScript
 - Chart.js（CDN）
+- Font Awesome（CDN）
+- Google Fonts Noto Sans TC（CDN）
 - Cloudflare Pages（部署）
 - Google AdSense（廣告收益）
+- Frankfurter API（匯率資料）
 
 ## 開始使用
 
@@ -39,6 +51,6 @@
 - `docs/workflow.md` — 開發工作流（含行銷技能觸發流程）
 - `docs/tech-stack.md` — 技術棧說明
 - `docs/ad-revenue.md` — 廣告收益計畫
-- `DESIGN.md` — Coinbase 風格設計系統
+- `DESIGN.md` — 深色主題設計系統
 - `.agents/skills/` — AI 行銷技能（SEO、Schema、內容策略等）
 - `AGENTS.md` — AI 協作規則

@@ -1,7 +1,7 @@
 # Session Handover — 交辦事項
 
 **Session ID:** ses_1de9c333effefCmozW093Mg7wd
-**日期:** 2026-05-13
+**日期:** 2026-05-16
 
 ## 已完成事項
 
@@ -12,7 +12,7 @@
 - [x] 建立 AGENTS.md（AI 協作規則）
 - [x] 建立 docs/architecture.md（系統架構）
 - [x] 建立 docs/workflow.md（開發工作流）
-- [x] 建立 docs/tech-stack.md（技術棧決策）
+- [x] 建立 docs/tech-stack.md（技術棧說明）
 - [x] 建立 docs/ad-revenue.md（廣告收益計畫）
 
 ### 前端基礎
@@ -21,60 +21,63 @@
 - [x] 建立 assets/js/main.js（手機選單、版權年份更新）
 - [x] 建立 assets/js/utils.js（工具函式：格式化、驗證、DOM 操作）
 
-### 貸款計算機（完整實作）
-- [x] calculators/loan.html（含表單、結果區、Chart.js 圖表、免責聲明）
-- [x] assets/js/calculators/loan.js（等額本息計算公式、輸入驗證、Chart.js doughnut）
-- [x] 支援邊界情況（利率 0%、本金 0、Enter 鍵觸發計算）
+### 全部 6 個計算機（完整實作）
+- [x] calculators/loan.html + loan.js（等額本息計算、Chart.js doughnut）
+- [x] calculators/mortgage.html + mortgage.js（房價/自備款/利率/年限、攤還明細表前12期、Doughnut 圖表）
+- [x] calculators/savings.html + savings.js（初始存款+每月存入、複利計算、Line 成長曲線圖）
+- [x] calculators/investment.html + investment.js（定期定額投資、年化報酬率、Line 成長曲線圖）
+- [x] calculators/retirement.html + retirement.js（年齡/儲蓄/報酬率/通膨、充足性評估、Bar 資產預測圖）
+- [x] calculators/currency.html + currency.js（20種貨幣、Frankfurter API、互換功能）
 
-### 其他計算機（骨架）
-- [x] calculators/mortgage.html（房貸試算骨架）
-- [x] calculators/savings.html（儲蓄規劃骨架）
-- [x] calculators/investment.html（投資報酬骨架）
-- [x] calculators/retirement.html（退休規劃骨架）
-- [x] calculators/currency.html（匯率轉換骨架）
+### 設計系統
+- [x] 深色主題全面套用（背景 #0a0a0a、漸層光暈、毛玻璃導航）
+- [x] 所有圖表適配深色主題（文字顏色、tooltip、grid）
+- [x] 按鈕 pill 形狀 + 漸層 + 懸停光暈
+- [x] 卡片懸停頂部漸層光條效果
+- [x] 自訂深色捲軸樣式
+
+### SEO 與結構化資料
+- [x] 所有頁面加入 BreadcrumbList JSON-LD
+- [x] 首頁加入 WebSite Schema
+- [x] 每個頁面獨立 meta title + description
+- [x] Open Graph 標籤
+
+### Google AdSense
+- [x] AdSense 驗證程式碼加入所有頁面 `<head>`（ca-pub-1464276579658775）
+- [x] 每個頁面 ad-container 已預留（ad-top、ad-bottom）
 
 ### Git 設定
 - [x] SSH 金鑰已產生並加入 GitHub 帳號
 - [x] Remote URL 已切換為 SSH（git@github.com:Andy9545/Paliquant.git）
-- [x] 首次推送已完成（commit: 8d9571e）
+- [x] 多次推送已完成
 
-## 交付清單／待辦事項
+### AI 行銷技能
+- [x] 安裝 6 組技能：free-tools、schema、seo-audit、site-architecture、content-strategy、analytics
 
-### P0 — 核心功能（立即實作）
+## 待辦事項
 
-| 項目 | 說明 | 參考人數 |
-|------|------|---------|
-| mortgage 房貸試算 | 等額本息 + 攤還明細表 + Chart.js 長條圖（本金/利息比例） | 參考 loan |
-| savings 儲蓄規劃 | 複利計算 FV = PV(1+r)^n + 成長曲線圖 | 獨立 |
-| investment 投資報酬 | 定期定額 FV = P * ((1+r)^n - 1)/r + Chart.js | 參考 savings |
-| retirement 退休規劃 | 需求評估：目前年齡、退休年齡、預期壽命、通膨率、年化報酬率 | 綜合 |
-| currency 匯率轉換 | 串接免費匯率 API（exchangerate-api.com 或 frankfurter.app） | 獨立 |
-
-### P1 — 基礎建設
+### P1 — 高優先
 
 | 項目 | 說明 |
 |------|------|
-| 隱私政策頁面 | privacy.html（AdSense 需要） |
-| 關於我們頁面 | about.html |
-| 聯絡我們頁面 | contact.html |
-| 免責聲明頁面 | disclaimer.html |
-| favicon | 建立或下載計算機圖示至 assets/images/favicon.ico |
+| 建立法律頁面 | privacy.html、about.html、contact.html、disclaimer.html |
+| 申請 Google AdSense | 需網站至少有 10-15 頁內容、隱私政策、部署到公開網域 |
+| 整合廣告單元 | 每個頁面的 ad-container 填入 AdSense 程式碼 |
 
-### P2 — 營利整合
-
-| 項目 | 說明 |
-|------|------|
-| 申請 Google AdSense | 需網站至少有 10-15 頁內容、隱私政策、部署到公開網域、HTTPS |
-| 整合廣告程式碼 | 每個頁面的 ad-container 插入 AdSense 程式碼 |
-| 提交 Search Console | 讓 Google 索引網站 |
-
-### P3 — 部署
+### P2 — 中優先
 
 | 項目 | 說明 |
 |------|------|
 | 設定 Cloudflare Pages | 連結 GitHub 倉庫 Andy9545/Paliquant，選擇 main 分支 |
 | 設定自訂網域 | 在 Cloudflare Pages 綁定已購買的網域 |
-| 啟用 HTTPS | Cloudflare 自動提供 |
+| 提交 Search Console | 讓 Google 索引網站 |
+
+### P3 — 低優先
+
+| 項目 | 說明 |
+|------|------|
+| 內容擴充 | 每個計算機頁面加入 FAQ 區塊、HowTo 教學 |
+| Analytics 整合 | 加入 GA4 事件追蹤 |
 
 ## 重要提醒
 

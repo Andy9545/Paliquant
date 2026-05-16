@@ -176,6 +176,7 @@ document.addEventListener('DOMContentLoaded', function () {
           legend: {
             position: 'bottom',
             labels: {
+              color: '#e5e7eb',
               font: {
                 size: 13,
               },
@@ -183,6 +184,11 @@ document.addEventListener('DOMContentLoaded', function () {
             },
           },
           tooltip: {
+            backgroundColor: 'rgba(26, 26, 26, 0.95)',
+            titleColor: '#e5e7eb',
+            bodyColor: '#e5e7eb',
+            borderColor: '#333',
+            borderWidth: 1,
             callbacks: {
               label: function (context) {
                 return context.dataset.label + ': ' + formatMoney(context.parsed.y);
@@ -193,9 +199,10 @@ document.addEventListener('DOMContentLoaded', function () {
         scales: {
           x: {
             grid: {
-              display: false,
+              color: 'rgba(42, 42, 42, 0.5)',
             },
             ticks: {
+              color: '#9ca3af',
               font: {
                 size: 11,
               },
@@ -203,7 +210,11 @@ document.addEventListener('DOMContentLoaded', function () {
           },
           y: {
             beginAtZero: true,
+            grid: {
+              color: 'rgba(42, 42, 42, 0.5)',
+            },
             ticks: {
+              color: '#9ca3af',
               font: {
                 size: 11,
               },
